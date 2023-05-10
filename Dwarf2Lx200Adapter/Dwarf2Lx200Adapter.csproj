@@ -6,10 +6,10 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
 	  <!--<PublishAot>true</PublishAot>-->
-      <PublishSingleFile>true</PublishSingleFile>
+      <!--<PublishSingleFile>true</PublishSingleFile>
       <SelfContained>true</SelfContained>
       <RuntimeIdentifier>linux-arm</RuntimeIdentifier>
-    <InvariantGlobalization>true</InvariantGlobalization>
+    <InvariantGlobalization>true</InvariantGlobalization>-->
   </PropertyGroup>
 
 </Project>

@@ -1,6 +1,4 @@
-﻿using Dwarf2Lx200Adapter;
-
-Console.WriteLine("Hello, World!");
+﻿Console.WriteLine("Hello, World!");
 
 var lx200Server = new LX200Server("127.0.0.1", 9999);
 

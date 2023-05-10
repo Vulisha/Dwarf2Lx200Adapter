@@ -1,11 +1,6 @@
-﻿using Dwarf2Lx200Adapter;
-using System;
-using System.IO;
-using System.Net;
+﻿using System.Net;
 using System.Net.Sockets;
 using System.Text;
-using System.Threading.Tasks;
-
 public class LX200Server
 {
     private readonly IPAddress _ipAddress;

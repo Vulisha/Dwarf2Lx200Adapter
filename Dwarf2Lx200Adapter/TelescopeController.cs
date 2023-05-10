@@ -142,9 +142,7 @@ public class TelescopeController
             {
                 double sign = command[3] == '-' ? -1 : 1;
                 TargetDeclination = sign * (degrees + (minutes / 60) + (seconds / 3600));
-                
-                //TODO 
-                
+                                
                 return "1";
             }
             else
@@ -171,7 +169,6 @@ public class TelescopeController
                 _telescopeData.RightAscension = TargetRightAscension;
             }
 
-            //call rest
             return result.ToString();
         }
         else if (command == ":GD")
