@@ -1,8 +1,9 @@
 # Dwarf2Lx200Adapter
 Adapter to enable LX200 protocol on Dwarf2 smart telescope. 
 
-### Version 0.0.1 added ability to configure Dwarf2 IpAddress so adapter can run from Windows or any other device that has .Net7 installed (linux arm,x86,x64) 
+### Version 0.0.1 added ability to configure Dwarf2 IpAddress so adapter can run from Windows  
 This is extremly early version that has not been fully tested yet, so expect unexpected. 
+This is tutorial for windows, for other OS you will have to use executables/portable and install .Net7 runtime (linux arm,x86,x64, osx... supported) 
 
 1. Turn on your Dwarf2 connect it to same network as your computer, and do calibration.
 
@@ -23,7 +24,10 @@ Dwarf2Lx200Adapter.exe IpAddress
   ```
   
   GoTo should work now. 
-### You can brick your device if you are not carefull, you are using this on your own responsibility 
+  
+  COM port support also added, you need com0com for that to be able to connect with Stellarium, but stellarium does not seem to send commands to app, so it is not working. If you want to play around just add com port after IpAddress e.g Dwarf2Lx200Adapter.exe 192.168.1.180 COM5
+ 
+### Version 0.0.0 You can brick your device if you are not carefull, you are using this on your own responsibility 
 This is extremly early version that has not been fully tested yet due to clouds. 
 
 This version is intended to be used to be installed directly on dwarf. If you want and know how you can alter IP adresses and build it for your own Windows/Linux PC 
