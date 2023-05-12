@@ -1,6 +1,28 @@
 # Dwarf2Lx200Adapter
 Adapter to enable LX200 protocol on Dwarf2 smart telescope. 
 
+### Version 0.0.1 added ability to configure Dwarf2 IpAddress so adapter can run from Windows or any other device that has .Net7 installed (linux arm,x86,x84) 
+This is extremly early version that has not been fully tested yet, so expect unexpected. 
+
+1. Turn on your Dwarf2 connect it to same network as your computer, and do calibration.
+
+2. To run this adapter from windows (64bit) first find IpAddress of your Dwarf2(use tool like Fing), download executables/win64/Dwarf2Lx200Adapter.exe
+
+3. Open command prompt in same location where downloaded exe is and run following command 
+```
+Dwarf2Lx200Adapter.exe IpAddress
+```
+4. Now take your app that supports LX200 (skysafary for example) and configure it with IpAddress of YOUR *COMPUTER*, not dwarf.
+  
+  ```
+  Settings -> Setup -> Scope Type: Meade LX200 Classic, Mount Type -- Equatorial GoTo (German)   
+  Connect via WiFi  
+  IpAddress: IPADDRESS 
+  Port Number: 9999  
+  Check "Set Time&Location" 
+  ```
+  
+  GoTo should work now. 
 ### You can brick your device if you are not carefull, you are using this on your own responsibility 
 This is extremly early version that has not been fully tested yet due to clouds. 
 
