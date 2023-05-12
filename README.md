@@ -1,7 +1,7 @@
 # Dwarf2Lx200Adapter
 Adapter to enable LX200 protocol on Dwarf2 smart telescope. 
 
-### Version 0.0.1 added ability to configure Dwarf2 IpAddress so adapter can run from Windows or any other device that has .Net7 installed (linux arm,x86,x84) 
+### Version 0.0.1 added ability to configure Dwarf2 IpAddress so adapter can run from Windows or any other device that has .Net7 installed (linux arm,x86,x64) 
 This is extremly early version that has not been fully tested yet, so expect unexpected. 
 
 1. Turn on your Dwarf2 connect it to same network as your computer, and do calibration.
