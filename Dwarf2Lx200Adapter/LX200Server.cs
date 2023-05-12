@@ -7,10 +7,9 @@ public class LX200Server
     private readonly int _port;
     private readonly TelescopeController _telescopeController;
 
-    public LX200Server(string ipAddress, int port)
+    public LX200Server(int port)
     {
         _ipAddress = IPAddress.Any;
-        //_ipAddress = IPAddress.Parse(ipAddress);
         _port = port;
         _telescopeController = TelescopeController.Instance;
     }

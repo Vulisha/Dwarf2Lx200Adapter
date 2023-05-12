@@ -1,11 +1,12 @@
-﻿using System.Net.WebSockets;
+﻿using Dwarf2Lx200Adapter;
+using System.Net.WebSockets;
 using System.Text;
 using System.Text.Json;
 
 
 public class WebSocketClient
 {
-    private readonly Uri _serverUri = new Uri("ws://127.0.0.1:9900");
+    private readonly Uri _serverUri = new Uri("ws://"+ApplicationConfiguration.IPAddress+":9900");
     private ClientWebSocket _clientWebSocket;
 
     public async Task ConnectAsync()
@@ -51,7 +52,7 @@ public class WebSocketClient
     public async Task UpdateDateTimeAsync()
     {
         string dateTime = DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss");
-        string url = $"http://127.0.0.1:8092/date?date={dateTime}";
+        string url = $"http://" + ApplicationConfiguration.IPAddress + ":8092/date?date={dateTime}";
 
         using var httpClient = new HttpClient();
         HttpResponseMessage response = await httpClient.GetAsync(url);

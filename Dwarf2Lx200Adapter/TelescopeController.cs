@@ -125,7 +125,7 @@ public class TelescopeController
                 double.TryParse(command.Substring(6, 2), out double minutes) &&
                 double.TryParse(command.Substring(9, 2), out double seconds))
             {
-                TargetRightAscension = hours + (minutes / 60) + (seconds / 3600);
+                TargetRightAscension = hours + ((minutes-2) / 60) + (seconds / 3600);
 
                 return "1";
             }
@@ -163,11 +163,9 @@ public class TelescopeController
             int result = 0;
             // START MOVE
             result = await Dwarf2Client.Goto(Longitude, Latitude, TargetRightAscension, TargetDeclination, DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss"), "DWARF_GOTO_LX200" + DateTime.UtcNow.ToString("yyyyMMddHH:mm:ss"));
-            if(result == 0)
-            {
-                _telescopeData.Declination = TargetDeclination;
-                _telescopeData.RightAscension = TargetRightAscension;
-            }
+
+            _telescopeData.Declination = TargetDeclination;
+            _telescopeData.RightAscension = TargetRightAscension;
 
             return result.ToString();
         }
