@@ -400,3 +400,6 @@ FodyWeavers.xsd
 !executables/
 !executables/*/
 !executables/*/*/
+!executables/*/*/*/
+!executables/*/*/*/*/
+!executables/*/*/*/*/*/
