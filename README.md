@@ -41,6 +41,7 @@ To install this follow this steps:
 
 ```
 scp local_path_to_Dwarf2Lx200Adapter root@IPADDRESS/usr/bin/Dwarf2Lx200Adapter
+scp local_path_to_libSystem.IO.Ports.Native.so root@IPADDRESS/usr/bin/libSystem.IO.Ports.Native.so
 ``` 
 When prompted for password it is ```rockchip```
 
