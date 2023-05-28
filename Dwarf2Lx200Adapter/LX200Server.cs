@@ -19,6 +19,8 @@ public class LX200Server
         var listener = new TcpListener(_ipAddress, _port);
         listener.Start();
 
+        Console.WriteLine("LX200 Server started...");
+
         while (true)
         {
             var client = await listener.AcceptTcpClientAsync();
@@ -26,7 +28,7 @@ public class LX200Server
         }
     }
 
-    private async Task HandleClientAsync(TcpClient client)
+private async Task HandleClientAsync(TcpClient client)
     {
         using (var stream = client.GetStream())
         using (var reader = new StreamReader(stream, Encoding.ASCII))
@@ -43,9 +45,11 @@ public class LX200Server
                 {
                     // Command terminator received, process the command.
                     string response = await _telescopeController.HandleCommand(command.ToString());
-                    if(command.ToString() != ":GR" && command.ToString() != ":GD")
-                    Console.WriteLine(command.ToString());
-
+                   if(command.ToString() != ":GR" && command.ToString() != ":GD")
+                    {
+                        Console.WriteLine(command.ToString());
+                        Console.WriteLine(response.ToString());
+                    }
                     if (!string.IsNullOrEmpty(response))
                     {
                         await writer.WriteAsync(response);
