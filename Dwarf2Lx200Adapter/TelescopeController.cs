@@ -9,7 +9,7 @@ public class TelescopeController
 
     public event EventHandler<(double RA, double DEC)> CoordinatesReceived;
 
-    private readonly TelescopeData _telescopeData;
+    private  TelescopeData _telescopeData;
 
     public double TargetDeclination { get; private set; }
 
@@ -23,9 +23,13 @@ public class TelescopeController
 
     private DateTime _localTime;
 
+    private bool initDec;
+    private bool initRA;
+
     private TelescopeController()
     {
         _telescopeData = new TelescopeData();
+
     }
 
     public void UpdateTelescopeData(double rightAscension, double declination)
@@ -44,6 +48,13 @@ public class TelescopeController
     public double GetCurrentDEC()
     {
         return _telescopeData.Declination;
+    }
+
+    private async Task SetDefaultCoordinates()
+    {
+        await Task.Delay(1500);
+        _telescopeData.RightAscension = 0;
+       _telescopeData.Declination = 90;
     }
 
     public async Task<string> HandleCommand(string command)
@@ -153,6 +164,11 @@ public class TelescopeController
 
         else if (command == ":GR")
         {
+            if(!initRA)
+            { 
+                _telescopeData.RightAscension = 0;
+                initRA = true;
+            }
             double ra = GetCurrentRA();
             TimeSpan raTimeSpan = TimeSpan.FromHours(ra);
             string res = $"+{raTimeSpan.Hours:D2}:{raTimeSpan.Minutes:D2}.{raTimeSpan.Seconds:D1}#";
@@ -161,16 +177,21 @@ public class TelescopeController
         else if (command == ":MS")
         {
             int result = 0;
-            // START MOVE
-            result = await Dwarf2Client.Goto(Longitude, Latitude, TargetRightAscension, TargetDeclination, DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss"), "DWARF_GOTO_LX200" + DateTime.UtcNow.ToString("yyyyMMddHH:mm:ss"));
-
-            _telescopeData.Declination = TargetDeclination;
+             _telescopeData.Declination = TargetDeclination;
             _telescopeData.RightAscension = TargetRightAscension;
+
+            result = await Dwarf2Client.Goto(Longitude, Latitude, TargetRightAscension, TargetDeclination, DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss"), "DWARF_GOTO_LX200" + DateTime.UtcNow.ToString("yyyyMMddHH:mm:ss"));
 
             return result.ToString();
         }
         else if (command == ":GD")
         {
+            if (!initDec)
+            {
+                _telescopeData.Declination = 0;
+                initDec = true;
+            }
+
             double dec = GetCurrentDEC();
             int sign = Math.Sign(dec);
             dec = Math.Abs(dec);
@@ -188,6 +209,9 @@ public class TelescopeController
         }
         else if (command.StartsWith(":RM") || command.StartsWith(":RS") || command.StartsWith(":RC") || command.StartsWith(":RG"))
         {
+            initRA = false;
+            initDec = false;
+            SetDefaultCoordinates();
             Dwarf2Client.init(Longitude, Latitude,  _localTime.AddHours(_utcOffsetHours).ToString("yyyy-MM-dd HH:mm:ss"), "DWARF_GOTO_LX200" + DateTime.UtcNow.ToString("yyyyMMddHH:mm:ss"));
 
             return "1";
