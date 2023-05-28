@@ -46,7 +46,7 @@ public class StellariumRemoteServer
 
             await _controller.HandleCommand(MessageHelper.ConvertRaToLX200Format(raInHours));
             await _controller.HandleCommand(MessageHelper.ConvertDecToLX200Format(decInDegrees));
-            await _controller.HandleCommand($":MS#");
+            await _controller.HandleCommand($":MS");
 
        }
     }

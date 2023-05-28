@@ -6,6 +6,8 @@
       "version": "7.0.0"
     },
     "configProperties": {
+      "System.Globalization.Invariant": true,
+      "System.Globalization.PredefinedCulturesOnly": true,
       "System.Reflection.Metadata.MetadataUpdater.IsSupported": false
     }
   }
