@@ -1,6 +1,7 @@
 # Dwarf2Lx200Adapter
 Adapter to enable LX200 protocol on Dwarf2 smart telescope. 
-
+### Version 0.0.3 added Stellarium support 
+Select External Software and enter port 10015.For some reason you have to click Slew twice...
 ### Version 0.0.1 added ability to configure Dwarf2 IpAddress so adapter can run from Windows  
 This is extremly early version that has not been fully tested yet, so expect unexpected. 
 This is tutorial for windows, for other OS you will have to use executables/portable and install .Net7 runtime (linux arm,x86,x64, osx... supported) 
