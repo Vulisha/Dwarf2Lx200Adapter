@@ -180,7 +180,7 @@ public class TelescopeController
              _telescopeData.Declination = TargetDeclination;
             _telescopeData.RightAscension = TargetRightAscension;
 
-            result = await Dwarf2Client.Goto(Longitude, Latitude, TargetRightAscension, TargetDeclination, DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss"), "DWARF_GOTO_LX200" + DateTime.UtcNow.ToString("yyyyMMddHH:mm:ss"));
+            result = await Dwarf2Client.Goto(Longitude, Latitude, TargetRightAscension, TargetDeclination, DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss"), "DWARF_GOTO_LX200" + DateTime.UtcNow.ToString("yyyyMMddHHmmss"));
 
             return result.ToString();
         }
@@ -212,7 +212,7 @@ public class TelescopeController
             initRA = false;
             initDec = false;
             SetDefaultCoordinates();
-            Dwarf2Client.init(Longitude, Latitude,  _localTime.AddHours(_utcOffsetHours).ToString("yyyy-MM-dd HH:mm:ss"), "DWARF_GOTO_LX200" + DateTime.UtcNow.ToString("yyyyMMddHH:mm:ss"));
+            Dwarf2Client.init(Longitude, Latitude,  _localTime.AddHours(_utcOffsetHours).ToString("yyyy-MM-dd HH:mm:ss"), "DWARF_GOTO_LX200" + DateTime.UtcNow.ToString("yyyyMMddHHmmss"));
 
             return "1";
             //return result==0?"1":"0";   
